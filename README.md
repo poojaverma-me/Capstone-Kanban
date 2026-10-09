@@ -7,7 +7,10 @@ kanban-supabase/
 ├── index.html        the board (HTML + CSS + JS, no build step)
 ├── agent.html        the Board Agent page: operating manual + tools for an AI agent
 ├── schema.sql        tables, policies and live updates for Supabase
-└── agent-setup.sql   run log, restricted agent role and the agent token
+├── agent-setup.sql   run log, restricted agent role and the agent token
+├── manifest.webmanifest, sw.js   installable app (PWA) + offline app shell
+├── favicon.ico
+└── icons/            app icons, Apple touch icon, favicons
 ```
 
 ## Set up (about 5 minutes)
@@ -67,6 +70,18 @@ Deleting a task or a member cascades to `task_assignees`.
 
 To lock it down later, enable Supabase Auth and change the policies from `to anon, authenticated` to `to authenticated`.
 
+## Install it as an app (PWA)
+
+When the board is served over **https** (GitHub Pages, Netlify, Vercel), it can be installed like a native app with its own icon and window:
+
+- **Mac / Windows (Chrome, Edge):** click **Install** in the board's top bar, or the install icon in the address bar.
+- **iPhone / iPad (Safari):** Share → **Add to Home Screen**.
+- **Android (Chrome):** menu → **Install app**.
+
+Right-click the app icon (or long-press it on a phone) for shortcuts: **New task** and **Board Agent**. The app shell opens even offline; tasks need a connection, because they live in Supabase.
+
+Opening `index.html` straight from your computer still works, but it can't be installed that way. Browsers only allow installing from https.
+
 ## Hosting (optional)
 
-`index.html` works when opened straight from your computer. To give the team a link instead, drop the folder onto any static host (GitHub Pages, Netlify, Vercel).
+To give the team a link, put the folder on any static host. With GitHub Pages: repo **Settings → Pages → Deploy from branch → `main` / root**. The board will be at `https://<user>.github.io/<repo>/`.
