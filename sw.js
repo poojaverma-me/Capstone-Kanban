@@ -1,16 +1,16 @@
 // Service worker: makes the board installable and lets the app shell open offline.
 // Board data always comes live from Supabase and is never cached here.
-const VERSION = "board-v1"
+const VERSION = "board-v2"
 const SHELL = [
   "./",
   "./index.html",
   "./agent.html",
-  "./manifest.webmanifest",
-  "./favicon.ico",
-  "./icons/icon-192.png",
-  "./icons/icon-512.png",
-  "./icons/apple-touch-icon.png",
-  "./icons/favicon-32.png",
+  "./manifest.webmanifest?v=2",
+  "./favicon.ico?v=2",
+  "./icons/icon-192.png?v=2",
+  "./icons/icon-512.png?v=2",
+  "./icons/ios-180.png?v=2",
+  "./icons/favicon-32.png?v=2",
   "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js",
 ]
 
